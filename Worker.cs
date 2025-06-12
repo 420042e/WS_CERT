@@ -1,4 +1,3 @@
-namespace WS_CERT; // Aseg�rate de que coincida con tu namespace
 using System;
 using System.Net.Security;
 using System.Net.Sockets;
@@ -7,6 +6,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Wordprocessing;
+using Serilog;
+
+namespace WS_CERT; // Aseg�rate de que coincida con tu namespace
 
 public class Worker : BackgroundService
 {
