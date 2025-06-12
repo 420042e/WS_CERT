@@ -125,15 +125,22 @@ public class Worker : BackgroundService
                 ws1.Cell(row, 4).Value = cert.ValidoDesde;
                 ws1.Cell(row, 5).Value = cert.ValidoHasta;
                 
-                if ((cert.ValidoHasta - hoy).TotalDays <= 14)
+                if (DateTime.TryParse(cert.ValidoHasta, out DateTime fechaVencimiento))
                 {
-                    ws1.Cell(row, 5).Style.Fill.BackgroundColor = XLColor.Yellow;
+                    if ((fechaVencimiento - hoy).TotalDays <= 14)
+                    {
+                        ws1.Cell(row, 5).Style.Fill.BackgroundColor = XLColor.Red;
+                    }
+                }
+                
+                if (DateTime.TryParse(cert.ValidoHasta, out DateTime fechaVencimiento))
+                {
+                    if ((fechaVencimiento - hoy).TotalDays <= 7)
+                    {
+                        ws1.Cell(row, 5).Style.Fill.BackgroundColor = XLColor.Red;
+                    }
                 }
 
-                if ((cert.ValidoHasta - hoy).TotalDays <= 7)
-                {
-                    ws1.Cell(row, 5).Style.Fill.BackgroundColor = XLColor.Red;
-                }
 
                 ws1.Cell(row, 6).Value = cert.Observacion;
                 row++;
