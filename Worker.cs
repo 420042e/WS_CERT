@@ -37,11 +37,8 @@ public class Worker : BackgroundService
 
             var ws1 = wbook.Worksheets.Add("Resumen");
             ws1.Cell(1, 1).Value = "SERVIDORES";
-            ws1.Range("A1:O1").Row(1).Merge();
             ws1.Cell(1, 2).Value = "FECHA DE PROCESAMIENTO: ";
-            ws1.Range("A2:O2").Row(1).Merge();
             ws1.Cell(1, 3).Value = "REGISTROS OBSERVADOS POR:";
-            ws1.Range("C4:I4").Row(1).Merge();
 
             ws1.Cell(2, 1).Value = "VALOR 1";
             ws1.Cell(2, 2).Value = "VALOR 2";
