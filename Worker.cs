@@ -86,11 +86,12 @@ public class Worker : BackgroundService
                     //BorrarE
                     var info = new CertificadoInfo
                     {
-                        Host = "Error al obtener el certificado del servidor " + host,
+                        Host = host,
                         Sujeto = "null",
                         Emisor = "null",
                         ValidoDesde = "null",
-                        ValidoHasta = "null"
+                        ValidoHasta = "null",
+                        Observacion = "Error al obtener el certificado del servidor " + host
                     };
                     certificados.Add(info);
 

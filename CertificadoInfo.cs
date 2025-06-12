@@ -6,4 +6,5 @@ public class CertificadoInfo
     public string Emisor { get; set; }
     public string ValidoDesde { get; set; }
     public string ValidoHasta { get; set; }
+    public string Observacion { get; set; }
 }
