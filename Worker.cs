@@ -83,6 +83,17 @@ public class Worker : BackgroundService
                 }
                 catch (Exception ex)
                 {
+                    //BorrarE
+                    var info = new CertificadoInfo
+                    {
+                        Host = "Error al obtener el certificado del servidor " + host,
+                        Sujeto = "null",
+                        Emisor = "null",
+                        ValidoDesde = "null",
+                        ValidoHasta = "null"
+                    };
+                    certificados.Add(info);
+
                     _logger.LogError(ex, "Error al obtener el certificado del servidor {host}.", host);
                 }
             }
