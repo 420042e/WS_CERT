@@ -32,20 +32,6 @@ public class Worker : BackgroundService
             _logger.LogInformation("El Worker est� ejecutando una tarea en: {time}", DateTimeOffset.Now);
             _logger.LogWarning("Este es un mensaje de advertencia de ejemplo.");
 
-            string archive = "D:\\BCB_LOGS\\logs\\DetalleServidores-" + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
-            using var wbook = new XLWorkbook();
-
-            var ws1 = wbook.Worksheets.Add("Resumen");
-            ws1.Cell(1, 1).Value = "SERVIDORES";
-            ws1.Cell(1, 2).Value = "FECHA DE PROCESAMIENTO: ";
-            ws1.Cell(1, 3).Value = "REGISTROS OBSERVADOS POR:";
-
-            ws1.Cell(2, 1).Value = "VALOR 1";
-            ws1.Cell(2, 2).Value = "VALOR 2";
-            ws1.Cell(2, 3).Value = "VALOR 3";
-
-            wbook.SaveAs(archive);
-
             string[] hosts = { "DEVCRM13", "DEVAII00", "DEVAIO00", "DEVAIC00", "DEVYAS00", "DEVANT01", "DEVPWB00", "DEVCFW00", "DEVODS00", "DEVSQR00", "DEVBEN01", "DEVSWD00", "DEVSWW00", "DEVSEG00", "DEVPSD01", "DEVPSD02", "DEVAPD00", "DEVAPD01", "DEVYAB00", "DEVSLK00", "DEVSLA00", "DEVARR00", "DEVARR01", "DEVMON00", "DEVSAG00", "DEVSAS00", "DEVPSA00", "DEVSAA00", "DEVSAD00", "DEVSRC00", "DEVSRD00", "DEVSRA00", "DEVSRT00", "DEVING00", "DEVRSS00", "DEVRDS00", "DEVRDS01", "DEVECS00", "DEVSPS00", "DEVARR02", "DEVCRS00", "DEVZCB01", "DEVZCO00", "DEVZCM00", "DEVZCS00", "DEVECD00", "DEVPMD00", "DEVPMA00", "DEVZCN00", "DEVSBD00", "DEVWST01", "DEVIBS01", "DEVFAW00", "DEVBCR00", "DEVMCR00", "DEVWCR00", "DEVBAA00", "DEVCFD10", "DEVCRM02", "DEVRHY00", "DEVOTP00", "DEVRYN00", "DEVBID00", "DEVWUT00", "DEVSGN00", "DEVDNW00", "DEVDNR00", "DEVDNA00", "DEVDNS00", "DEVDND00", "DEVMDP00", "DEVSAW01", "DEVTMP00", "DEVWSA16", "DEVCWD01", "DEVCWN00", "DEVDWR00", "DEVOCM00", "DEVNMW01", "DEVNMW02", "DEVTLM00", "DEVTLM01", "DEVWAC03", "DEVBMQ03", "DEVCCL00", "DEVDOC02", "DEVFTP00", "DEVNEB00", "DEVNEF00", "DEVNED00", "DEVACH13", "DEVWSA11", "DEVMLA00", "DEVFRW01", "DEVFRW02", "DEVMLD00", "DEVANT00", "DEVTNW00", "DEVFEN00", "DEVMGD00", "DEVZCB00", "DEVBCD00", "DEVDOA00", "DEVBFD01", "DEVFIW00", "DEVAND00", "DEVCRM01", "DEVCRE00", "DEVSSE00", "DEVTMB00", "DEVSRS00", "DEVINA01", "DEVHOW01", "DEVT7X10", "DEVNCD01", "DEVBTC00", "DEVSMS00", "DEVT7X11", "DEVSNW00", "DEVIIS10", "DEVWAC01", "DEVPSW00", "DEVHID01", "DEVSSI03", "DEVEXT03", "DEVBIO01", "DEVIND01", "DEVSSD01", "DEVDFS00", "DEVHOG00", "DEVTNH00", "DEVHOW00", "DEVWSD00", "DEVSCN02", "DEVAPI00", "DEVWSA02", "DEVCRM00", "DEVDBR00", "DEVFRW00", "DEVWAC00", "DEVSSI02", "DEVITF00", "DEVFEN02", "DEVNMW00", "DEVIMD10", "DEVSOD10", "DEVDOC01", "DEVSSI01", "DEVWAE00", "DEVNAC00", "DEVWWW10", "DEVRMD00", "DEVOFW00", "DEVBMQ01", "DEVULW00", "DEVCEW00", "DEVWSE00", "DEVHOD00", "DEVSSD16", "DEVSLD00", "DEVWPW00", "DEVOFD00", "DEVHOB00", "DEVAGD00", "DEVSSI00", "DEVTMW01", "DEVCRE01", "DEVMRP00", "DEVODD00", "DEVXTR12", "DEVACH10", "DEVBCW00", "DEVCWA00", "DEVFDB10", "DEVZCW04", "DEVBOC01", "DEVDBS08", "DEVBMQ00", "DEVWSS00", "DEVWAC02", "DEVCWN10", "DEVAID10", "DEVBFW00", "DEVSAH00", "DEVACH02", "DEVODW00", "DEVRMQ00", "DEVRHA00", "DEVRHA01", "DEVRHD00", "DEVRHD01", "DEVRHR00", "DEVSNA00", "DEVSLK01", "DEVBCA00", "DEVNOD00", "DEVRMC00", "DEVTMW00", "DEVSCN12", "DEVIBW00", "DEVNMF00", "DEVSCD12", "DEVMMQ00", "DEVZCW01", "DEVSLH00", "DEVZCW00", "DEVWCC00", "DEVWCM00", "DEVMGT00", "DEVSQI00", "DEVSIS02", "DEVSQE00", "DEVPSC00", "DEVBEN00", "DEVSLB00", "DEVCEN01", "DEVSWW01", "DEVCWN01", "DEVTKN00", "DEVSLH01", "DEVZCW02", "DEVTKN01", "DEVSDB00", "DEVINS00", "DEVPSD00", "DEVIBS10", "DEVDOD01", "DEVHIS01", "DEVRVW00", "DEVBAW00", "DEVBMB01", "DEVBOC00", "DEVZCD00", "DEVDBS12", "DEVCMQ01", "DEVSCN11", "DEVEXT02", "DEVSSE01", "DEVFAD00", "DEVSOW00", "DEVPAW00", "DEVBOC02", "DEVSND00", "DEVACR02", "DEVBMQ02", "DEVSGN01", "DEVHOC00", "DEVHID00", "DEVCED01", "DEVSLS00", "DEVACH01", "DEVACH11", "DEVACR00", "DEVACR01", "DEVAGW00", "DEVAIA00", "DEVBBW00", "DEVBBW01", "DEVBBW02", "DEVBBW03", "DEVBFA00", "DEVBMD01", "DEVDWI00", "DEVFEN01", "DEVIBD00", "DEVNSB00", "DEVNSW00", "DEVRYN01", "DEVRYN02", "DEVRYN03", "DEVRYN04", "DEVSQD00", "DEVSQS00", "DEVSQW00", "DEVSQW01", "DEVSSD02", "DEVWEB16", "DEVWEB17", "DEVWIS00", "DEVCRS02" }; // Agrega aquí todos los servidores que necesites
             //string[] hosts = { "CERAPI00", "CERULW00", "CERAII00", "CERAII01", "CERAIO00", "CERAIO01", "CERAIC00", "CERAIB00", "CERYAD01", "CERYAD00", "CERMRP00", "cerdnw00", "cerdnd00", "CERANT01", "CERDOD01", "CERSQI00", "CERPWB00", "CERBTC00", "CERSWD00", "CERPAW00", "CERPSD01", "CERPSD02", "CERAPD01", "CERYAB00", "CERSLH01", "CERSLH03", "CERSLK00", "CERAIC01", "CERSOD10", "CERSLH00", "CERSLH02", "CERCSW00", "CERBWC00", "CERBMS00", "CERSAG00", "CERSAS00", "CERSAA00", "CERSAD00", "CERPSA00", "CERRSS00", "CERYAS00", "CERZCB01", "CERZCO00", "CERZCM00", "CERZCS00", "CERZCN00", "CERECS00", "CERECD00", "CERAPD00", "CERSPS00", "CERSRA00", "CERSBD00", "CERSRT00", "CERSRD00", "CERBMQ02", "CERMCR00", "CERWCR00", "CERBCR00", "CERYCM01", "CERCCL00", "CERCCL01", "CERNEB00", "CERNEF00", "CERNED00", "CERBFD01", "CERFAW00", "CERWSA16", "CERSSE01", "CERMMQ00", "CERCWM01", "CERCWM11", "CERIAD00", "CERIMD10", "CERZCD00", "CERCWF13", "CERBMQ01", "CERWAC02", "CERBEN01", "CERSOW00", "CERTMD00", "CERWSD00", "CERCWN01", "CERPSC00", "CERCRT00", "CERBMD01", "CERIND01", "CERSQE00", "CERNAC00", "CEROTP00", "CERHOB00", "CERRVW00", "CERWSS00", "CERCFW00", "CERBAW00", "CERCFD10", "CERSSE00", "CERCBD01", "CERIBS10", "CERZCW01", "CERDYW16", "CERACH02", "CERWAC00", "CERIGD00", "CERWSE00", "CERSNW00", "CERNMF00", "CERMGT00", "CERFEN02", "CERSLS00", "CERSSD16", "CERBCD00", "CERFIW00", "CERACH12", "CERSSD01", "CERCWA00", "CERSSR00", "CERMLD00", "CERBMB00", "CERFTP00", "CERBID00", "CERACH13", "CERDBS08", "CERNAC10", "CERDFS00", "CERSLK02", "CERMLA00", "CERBIO01", "CERINA02", "CERBMQ00", "CERHOG00", "CERDWH10", "CERTMW00", "CERSLK01", "CERACH11", "CERIIS10", "CERCWM12", "CERRHD00", "CERHOD00", "CERTKN00", "CERMDP00", "CERZCW02", "CERZCW00", "CERODW00", "CERSCN11", "CERWCM00", "CERDOC01", "CERZCW03", "CERXTD00", "CERNOD00", "CERAID10", "CERCEN01", "CERBOC00", "CERWSA02", "CERZCB00", "CERFDB10", "CERIGM00", "CEROFW00", "CERNMW00", "CERWIS01", "CERFRW00", "CERINS00", "CERWCC00", "CERRHA00", "CERRMQ00", "CERRHS00", "CERHOW00", "CERSND00", "CERPSW00", "CERSLB00", "CERWUT00", "CERSCD11", "CEREXT02", "CERPSD00", "CERITF00", "CERSPA00", "CERCWM14", "CERSLD00", "CERIVD00", "CERSLA00", "CERSGN00", "CERWSA00", "CERCSW01", "CERBAA00", "CERODS00", "CERWPW00", "CERFAD00", "CERINA00", "CERODD00", "CERAND00", "CERHOW01", "CERTMW02", "CERWWW10", "CERACH10", "CERZCW04", "cersww01", "CERSIS02", "CERCED01", "CERSSI02", "CERSCD10", "CERDYD16", "CERWAE00", "CERDBS12", "CERCWM10", "CERWAC01", "CERCSD00", "CERTMH01", "CERFEN00", "CERDOA01", "CERBCA00", "CERSERVER11", "CERCMQ01", "CERSSI01", "CERSCN02", "CERHID00", "CERCWM16", "CEREXT03", "CERBFW00", "CERSPB00", "CERAGD00", "CERPSW01", "CERSAH01", "CERBOC02", "CERXTR12", "CEROFD00", "CERCWQ00", "CERCBD00", "CERBMW00", "CERCEW00", "CERACH01", "CERAGW00", "CERBBW00", "CERBBW01", "CERBBW02", "CERBEN00", "CERBUY00", "CERDOA00", "CERDOC00", "CERDWI00", "CERFEN01", "CERHVY00", "CERIBD00", "CERNSB00", "CERNSW00", "CERPGY00", "CERSQD00", "CERSQS00", "CERSQW00", "CERSQW01", "CERSSD02", "CERSWW00", "CERUEY00", "CERUEY01", "CERUEY02", "CERUSY00", "CERWEB16", "CERWEB17", "CERWIS00", "CERXCM01" }; // Agrega aquí todos los servidores que necesites
             //string[] hosts = { "SERVER9", "SERVER17", "SERVER99", "SERVER21", "SERVER19", "SERVER24", "SERVER15", "SERVER18", "SERVER32", "SERVER12", "SERVER14", "SERVER99_B", "SERVER11", "SERVER11A", "SERVER23", "SERVER28", "SERVER31", "SERVER34", "SERVER12A", "SERVER14A", "SERVER20", "SERVER27", "SERVER11B", "SERVER20A", "SERVER20B", "SERVER33", "SERVER98", "SERVER29", "SERVER14B", "SERVER99_C", "SERVER99_D", "SERVER99_E", "SERVER14C", "SERVER15A", "SERVER98_E", "SERVER98_F", "SERVER98_G", "SERVER98_H", "SERVER98_C", "SERVER98_D", "SERVER8", "SERVER30AZ", "SERVER31AZ", "SERVER99AZ" }; // Agrega aquí todos los servidores que necesites
@@ -53,6 +39,9 @@ public class Worker : BackgroundService
             //string[] hosts = { "BCRGON00", "BCRGON02", "BCRGON01", "BCRRMD01", "BCRROC01", "BCRNBX00", "BCRRPA01", "BCRRPA02", "BCRMON00", "BCRAUD00", "BCRSIC00", "BCRSIC02", "BCRCCX00", "BCRCSW04", "BCRCRS01", "BCRMCW00", "BCRQRD10", "BCRCSD00", "BCRCCP00", "BCRMDW01", "BCRCSC00", "BCRVPA00", "BCRMDW00", "BCRRME00", "BCRCOP00", "BCRROC02", "BCRCSF00", "BCRCEN06", "BCRCEN07", "BCRAWX00", "BCRGLB00", "BCRCEN08", "BCRCEN09", "BCRCEN10", "BCRPFD00", "BCRROC00", "BTBBCR00", "BCRCSW00", "BCRCSD01", "BCRQRD11", "BCRITR01", "BCRTEL00", "BCRPFE00", "BCRRBM00", "BCRITR00", "BCRMKT00", "BCRDNC00", "BCRDNF00", "BCRCSW05", "BCRCSW02", "BCRCSD02", "BCRCSW01", "BCRSWI00", "BCRSWI01", "BCRSWI02", "BCRRAP00", "BCRPCS00", "BCRPWD00", "BCRDVR01", "BCRCOM00", "BCRRPA00", "BCRSFS01", "BCRDUO00" }; // Agrega aquí todos los servidores que necesites
             
             int port = 443;
+
+            
+            ArrayList certificados = new ArrayList();
 
             foreach (string host in hosts)
             {
@@ -66,6 +55,18 @@ public class Worker : BackgroundService
 
                         if (cert != null)
                         {
+                            
+                            var info = new CertificadoInfo
+                            {
+                                Host = host,
+                                Sujeto = cert.Subject,
+                                Emisor = cert.Issuer,
+                                ValidoDesde = cert.GetEffectiveDateString(),
+                                ValidoHasta = cert.GetExpirationDateString()
+                            };
+                            certificados.Add(info);
+
+
                             _logger.LogInformation("Certificado del servidor {host}:", host);
                             _logger.LogInformation(" - Sujeto: {subject}", cert.Subject);
                             _logger.LogInformation(" - Emisor: {issuer}", cert.Issuer);
@@ -83,6 +84,33 @@ public class Worker : BackgroundService
                     _logger.LogError(ex, "Error al obtener el certificado del servidor {host}.", host);
                 }
             }
+
+
+
+            string archive = "D:\\BCB_LOGS\\logs\\DetalleServidores-" + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
+            using var wbook = new XLWorkbook();
+
+            var ws1 = wbook.Worksheets.Add("Resumen");
+            ws1.Cell(1, 1).Value = "SERVIDOR";
+            ws1.Cell(1, 2).Value = "SUJETO: ";
+            ws1.Cell(1, 3).Value = "EMISOR:";
+            ws1.Cell(1, 4).Value = "START:";
+            ws1.Cell(1, 5).Value = "END:";
+
+
+            // Volcar datos desde el ArrayList
+            int row = 2;
+            foreach (CertificadoInfo cert in certificados)
+            {
+                ws1.Cell(row, 1).Value = cert.Host;
+                ws1.Cell(row, 2).Value = cert.Sujeto;
+                ws1.Cell(row, 3).Value = cert.Emisor;
+                ws1.Cell(row, 4).Value = cert.ValidoDesde;
+                ws1.Cell(row, 5).Value = cert.ValidoHasta;
+                row++;
+            }
+            wbook.SaveAs(archive);
+
 
 
             // Espera 1 dia antes de la siguiente ejecuci�n
