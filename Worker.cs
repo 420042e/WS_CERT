@@ -89,4 +89,10 @@ public class Worker : BackgroundService
 
         _logger.LogInformation("El Worker se est� deteniendo.");
     }
+
+    private static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+    {
+        // Aquí puedes personalizar la validación si lo deseas
+        return true; // Aceptar todos los certificados (solo para pruebas)
+    }
 }
