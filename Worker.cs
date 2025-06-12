@@ -64,7 +64,8 @@ public class Worker : BackgroundService
                                 Sujeto = cert.Subject,
                                 Emisor = cert.Issuer,
                                 ValidoDesde = cert.GetEffectiveDateString(),
-                                ValidoHasta = cert.GetExpirationDateString()
+                                ValidoHasta = cert.GetExpirationDateString(),
+                                Observacion = ""
                             };
                             certificados.Add(info);
 
@@ -106,10 +107,11 @@ public class Worker : BackgroundService
 
             var ws1 = wbook.Worksheets.Add("Resumen");
             ws1.Cell(1, 1).Value = "SERVIDOR";
-            ws1.Cell(1, 2).Value = "SUJETO: ";
-            ws1.Cell(1, 3).Value = "EMISOR:";
-            ws1.Cell(1, 4).Value = "START:";
-            ws1.Cell(1, 5).Value = "END:";
+            ws1.Cell(1, 2).Value = "SUJETO ";
+            ws1.Cell(1, 3).Value = "EMISOR";
+            ws1.Cell(1, 4).Value = "START";
+            ws1.Cell(1, 5).Value = "END";
+            ws1.Cell(1, 6).Value = "OBSERVACIONES";
 
 
             // Volcar datos desde el ArrayList
@@ -121,6 +123,7 @@ public class Worker : BackgroundService
                 ws1.Cell(row, 3).Value = cert.Emisor;
                 ws1.Cell(row, 4).Value = cert.ValidoDesde;
                 ws1.Cell(row, 5).Value = cert.ValidoHasta;
+                ws1.Cell(row, 6).Value = cert.Observacion;
                 row++;
             }
             wbook.SaveAs(archive);
