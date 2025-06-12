@@ -9,6 +9,8 @@ using Microsoft.Extensions.Logging;
 using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Serilog;
+using System.Collections;
+
 
 namespace WS_CERT; // Aseg�rate de que coincida con tu namespace
 
