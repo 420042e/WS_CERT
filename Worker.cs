@@ -116,6 +116,7 @@ public class Worker : BackgroundService
 
             // Volcar datos desde el ArrayList
             int row = 2;
+            DateTime hoy = DateTime.Today;
             foreach (CertificadoInfo cert in certificados)
             {
                 ws1.Cell(row, 1).Value = cert.Host;
@@ -123,6 +124,17 @@ public class Worker : BackgroundService
                 ws1.Cell(row, 3).Value = cert.Emisor;
                 ws1.Cell(row, 4).Value = cert.ValidoDesde;
                 ws1.Cell(row, 5).Value = cert.ValidoHasta;
+                
+                if ((cert.ValidoHasta - hoy).TotalDays <= 14)
+                {
+                    ws1.Cell(row, 5).Style.Fill.BackgroundColor = XLColor.Yellow;
+                }
+
+                if ((cert.ValidoHasta - hoy).TotalDays <= 7)
+                {
+                    ws1.Cell(row, 5).Style.Fill.BackgroundColor = XLColor.Red;
+                }
+
                 ws1.Cell(row, 6).Value = cert.Observacion;
                 row++;
             }
