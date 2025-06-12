@@ -1,0 +1,46 @@
+2025-06-12 08:31:33.735 -04:00 [INF] Iniciando el servicio...
+2025-06-12 08:31:36.256 -04:00 [INF] El Worker se ha iniciado en: "2025-06-12T08:31:36.2476680-04:00"
+2025-06-12 08:31:36.262 -04:00 [INF] El Worker está ejecutando una tarea en: "2025-06-12T08:31:36.2625932-04:00"
+2025-06-12 08:31:36.263 -04:00 [WRN] Este es un mensaje de advertencia de ejemplo.
+2025-06-12 08:31:36.805 -04:00 [ERR] Hosting failed to start
+System.ArgumentOutOfRangeException: Row number must be between 1 and 1048576 (Parameter 'cellAddressInRange')
+   at ClosedXML.Excel.XLRangeBase.Cell(XLAddress& cellAddressInRange)
+   at ClosedXML.Excel.XLRangeBase.Cell(Int32 row, Int32 column)
+   at ClosedXML.Excel.XLWorksheet.ClosedXML.Excel.IXLWorksheet.Cell(Int32 row, Int32 column)
+   at WS_Stbn.Worker.ExecuteAsync(CancellationToken stoppingToken) in D:\Proyectos\WS_CERT\Worker.cs:line 31
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-06-12 08:31:36.897 -04:00 [FTL] El servicio no pudo iniciar.
+System.ArgumentOutOfRangeException: Row number must be between 1 and 1048576 (Parameter 'cellAddressInRange')
+   at ClosedXML.Excel.XLRangeBase.Cell(XLAddress& cellAddressInRange)
+   at ClosedXML.Excel.XLRangeBase.Cell(Int32 row, Int32 column)
+   at ClosedXML.Excel.XLWorksheet.ClosedXML.Excel.IXLWorksheet.Cell(Int32 row, Int32 column)
+   at WS_Stbn.Worker.ExecuteAsync(CancellationToken stoppingToken) in D:\Proyectos\WS_CERT\Worker.cs:line 31
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Program.<Main>$(String[] args) in D:\Proyectos\WS_CERT\Program.cs:line 36
+2025-06-12 08:32:05.965 -04:00 [INF] Iniciando el servicio...
+2025-06-12 08:32:08.429 -04:00 [INF] El Worker se ha iniciado en: "2025-06-12T08:32:08.4214782-04:00"
+2025-06-12 08:32:08.434 -04:00 [INF] El Worker está ejecutando una tarea en: "2025-06-12T08:32:08.4348493-04:00"
+2025-06-12 08:32:08.437 -04:00 [WRN] Este es un mensaje de advertencia de ejemplo.
+2025-06-12 08:32:20.041 -04:00 [INF] El Worker está ejecutando una tarea en: "2025-06-12T08:32:20.0413166-04:00"
+2025-06-12 08:32:20.044 -04:00 [WRN] Este es un mensaje de advertencia de ejemplo.
+2025-06-12 08:32:30.076 -04:00 [INF] El Worker está ejecutando una tarea en: "2025-06-12T08:32:30.0767169-04:00"
+2025-06-12 08:32:30.081 -04:00 [WRN] Este es un mensaje de advertencia de ejemplo.
+2025-06-12 08:32:42.337 -04:00 [INF] Iniciando el servicio...
+2025-06-12 08:32:45.368 -04:00 [INF] El Worker se ha iniciado en: "2025-06-12T08:32:45.3599440-04:00"
+2025-06-12 08:32:45.374 -04:00 [INF] El Worker está ejecutando una tarea en: "2025-06-12T08:32:45.3744787-04:00"
+2025-06-12 08:32:45.375 -04:00 [WRN] Este es un mensaje de advertencia de ejemplo.
+2025-06-12 08:43:15.392 -04:00 [INF] Iniciando el servicio...
+2025-06-12 08:43:17.217 -04:00 [INF] El Worker se ha iniciado en: "2025-06-12T08:43:17.2109677-04:00"
+2025-06-12 08:43:17.222 -04:00 [INF] El Worker está ejecutando una tarea en: "2025-06-12T08:43:17.2228800-04:00"
+2025-06-12 08:43:17.236 -04:00 [WRN] Este es un mensaje de advertencia de ejemplo.
+2025-06-12 08:43:27.935 -04:00 [INF] El Worker está ejecutando una tarea en: "2025-06-12T08:43:27.9357193-04:00"
+2025-06-12 08:43:27.941 -04:00 [WRN] Este es un mensaje de advertencia de ejemplo.
+2025-06-12 08:43:38.006 -04:00 [INF] El Worker está ejecutando una tarea en: "2025-06-12T08:43:38.0061539-04:00"
+2025-06-12 08:43:38.013 -04:00 [WRN] Este es un mensaje de advertencia de ejemplo.
+2025-06-12 08:43:48.066 -04:00 [INF] El Worker está ejecutando una tarea en: "2025-06-12T08:43:48.0661494-04:00"
+2025-06-12 08:43:48.071 -04:00 [WRN] Este es un mensaje de advertencia de ejemplo.
