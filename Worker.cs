@@ -10,6 +10,9 @@ using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Serilog;
 using System.Collections;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.Net.Mail;
+using System.Text;
 
 
 namespace WS_CERT; // Aseg�rate de que coincida con tu namespace
@@ -159,5 +162,41 @@ public class Worker : BackgroundService
     {
         // Aquí puedes personalizar la validación si lo deseas
         return true; // Aceptar todos los certificados (solo para pruebas)
+    }
+
+    public static bool MailSendClient(string to, Attachment a)
+    {
+        string urlImagen = "";
+        var urlBase64 = Convert.FromBase64String(urlImagen);
+        var u = Encoding.UTF8.GetString(urlBase64);
+        string contenido = AppDomain.CurrentDomain.BaseDirectory + @"Models\Resources\index.html";
+        string paginaWeb = contenido.Replace("{img001}", u);
+        string remitent = "echoquev@bcp.com.bo";
+        string subject = "echoquev@bcp.com.bo";
+        try
+        {
+            MailMessage message = new MailMessage(remitent, to)
+            {
+                Subject = subject,
+                IsBodyHtml = true,
+            };
+            message.Attachments.Add(a);
+            message.Body = paginaWeb;
+            SmtpClient smtp = new SmtpClient("BTBEXC00")//NOSONAR
+            {
+                EnableSsl = Convert.ToBoolean("false"),
+                UseDefaultCredentials = true,
+                Port = 25
+            };//NOSONAR
+            smtp.Send(message);
+            //_logger.LogInformation("SendMail.MailSendClient Adrres: {0} | Mail successfully sended.", to);
+            message.Dispose();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            //_logger.LogInformation("SendMail.MailSendClient Adrres: {0} | Error sending mail: {1}", to, ex.Message);
+            return false;
+        }
     }
 }
