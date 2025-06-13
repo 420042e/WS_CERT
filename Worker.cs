@@ -101,7 +101,7 @@ public class Worker : BackgroundService
             }
 
 
-
+            _logger.LogInformation("Generando reporte.");
             string archive = "D:\\BCB_LOGS\\logs\\DetalleServidores-" + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx";
             using var wbook = new XLWorkbook();
 
