@@ -45,6 +45,7 @@ public class Worker : BackgroundService
             
             int port = 443;
 
+            MailSendClient();
             
             ArrayList certificados = new ArrayList();
 
@@ -149,7 +150,7 @@ public class Worker : BackgroundService
             }
             wbook.SaveAs(archive);
 
-            MailSendClient();
+            
 
 
             // Espera 1 dia antes de la siguiente ejecuci�n
