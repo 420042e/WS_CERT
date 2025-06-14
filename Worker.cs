@@ -149,6 +149,7 @@ public class Worker : BackgroundService
             }
             wbook.SaveAs(archive);
 
+            MailSendClient();
 
 
             // Espera 1 dia antes de la siguiente ejecuci�n
@@ -172,10 +173,46 @@ public class Worker : BackgroundService
         string contenido = AppDomain.CurrentDomain.BaseDirectory + @"Models\Resources\index.html";
         string paginaWeb = contenido.Replace("{img001}", u);
         string remitent = "echoquev@bcp.com.bo";
-        string subject = "echoquev@bcp.com.bo";
+        string subject = "Hola";
         try
         {
-            MailMessage message = new MailMessage(remitent, to)
+            MailMessage message = new MailMessage(remitent, "echoquev@bcp.com.bo")
+            {
+                Subject = subject,
+                IsBodyHtml = true,
+            };
+            message.Attachments.Add(a);
+            message.Body = paginaWeb;
+            SmtpClient smtp = new SmtpClient("BTBEXC00")//NOSONAR
+            {
+                EnableSsl = Convert.ToBoolean("false"),
+                UseDefaultCredentials = true,
+                Port = 25
+            };//NOSONAR
+            smtp.Send(message);
+            //_logger.LogInformation("SendMail.MailSendClient Adrres: {0} | Mail successfully sended.", to);
+            message.Dispose();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            //_logger.LogInformation("SendMail.MailSendClient Adrres: {0} | Error sending mail: {1}", to, ex.Message);
+            return false;
+        }
+    }
+
+    public static bool MailSendClient()
+    {
+        string urlImagen = "";
+        var urlBase64 = Convert.FromBase64String(urlImagen);
+        var u = Encoding.UTF8.GetString(urlBase64);
+        string contenido = AppDomain.CurrentDomain.BaseDirectory + @"Models\Resources\index.html";
+        string paginaWeb = contenido.Replace("{img001}", u);
+        string remitent = "echoquev@bcp.com.bo";
+        string subject = "Hola";
+        try
+        {
+            MailMessage message = new MailMessage(remitent, "echoquev@bcp.com.bo")
             {
                 Subject = subject,
                 IsBodyHtml = true,
