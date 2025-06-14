@@ -208,7 +208,6 @@ public class Worker : BackgroundService
         var urlBase64 = Convert.FromBase64String(urlImagen);
         var u = Encoding.UTF8.GetString(urlBase64);
         string contenido = AppDomain.CurrentDomain.BaseDirectory + @"Models\Resources\index.html";
-        string paginaWeb = contenido.Replace("{img001}", u);
         string remitent = "echoquev@bcp.com.bo";
         string subject = "Hola";
         try
@@ -218,8 +217,7 @@ public class Worker : BackgroundService
                 Subject = subject,
                 IsBodyHtml = true,
             };
-            message.Attachments.Add(a);
-            message.Body = paginaWeb;
+            message.Body = "paginaWeb";
             SmtpClient smtp = new SmtpClient("BTBEXC00")//NOSONAR
             {
                 EnableSsl = Convert.ToBoolean("false"),
