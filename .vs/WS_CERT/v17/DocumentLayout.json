@@ -7,8 +7,24 @@
       "RelativeMoniker": "D:0:0:{49988157-D635-4270-8BA3-8201A41845A2}|WS_CERT.csproj|solutionrelative:worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{49988157-D635-4270-8BA3-8201A41845A2}|WS_CERT.csproj|d:\\proyectos\\ws_cert\\model\\servidor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49988157-D635-4270-8BA3-8201A41845A2}|WS_CERT.csproj|solutionrelative:model\\servidor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{49988157-D635-4270-8BA3-8201A41845A2}|WS_CERT.csproj|d:\\proyectos\\ws_cert\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{49988157-D635-4270-8BA3-8201A41845A2}|WS_CERT.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49988157-D635-4270-8BA3-8201A41845A2}|WS_CERT.csproj|d:\\proyectos\\ws_cert\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{49988157-D635-4270-8BA3-8201A41845A2}|WS_CERT.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49988157-D635-4270-8BA3-8201A41845A2}|WS_CERT.csproj|d:\\proyectos\\ws_cert\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49988157-D635-4270-8BA3-8201A41845A2}|WS_CERT.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49988157-D635-4270-8BA3-8201A41845A2}|WS_CERT.csproj|d:\\proyectos\\ws_cert\\certificadorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49988157-D635-4270-8BA3-8201A41845A2}|WS_CERT.csproj|solutionrelative:certificadorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,19 +34,72 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Proyectos\\WS_CERT\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\Proyectos\\WS_CERT\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-26T15:19:37.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Servidor.cs",
+              "DocumentMoniker": "D:\\Proyectos\\WS_CERT\\Model\\Servidor.cs",
+              "RelativeDocumentMoniker": "Model\\Servidor.cs",
+              "ToolTip": "D:\\Proyectos\\WS_CERT\\Model\\Servidor.cs",
+              "RelativeToolTip": "Model\\Servidor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswAoAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T15:09:43.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Proyectos\\WS_CERT\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Proyectos\\WS_CERT\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T14:47:50.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CertificadoRepository.cs",
+              "DocumentMoniker": "D:\\Proyectos\\WS_CERT\\CertificadoRepository.cs",
+              "RelativeDocumentMoniker": "CertificadoRepository.cs",
+              "ToolTip": "D:\\Proyectos\\WS_CERT\\CertificadoRepository.cs",
+              "RelativeToolTip": "CertificadoRepository.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAIAwwFUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T00:21:28.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Proyectos\\WS_CERT\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\Proyectos\\WS_CERT\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAUwA0AAAB5AAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAD4vzAAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-10T12:30:12.422Z"
+              "WhenOpened": "2025-06-10T12:30:12.422Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -40,7 +109,7 @@
               "RelativeDocumentMoniker": "Worker.cs",
               "ToolTip": "D:\\Proyectos\\WS_CERT\\Worker.cs",
               "RelativeToolTip": "Worker.cs",
-              "ViewState": "AgIAALAAAAAAAAAAAAAAAMUAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAD4vzoAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-10T12:30:03.716Z",
               "EditorCaption": ""
