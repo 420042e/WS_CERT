@@ -53,7 +53,7 @@ public class Worker : BackgroundService
                     try
                     {
                         DateTime _fechaActual = DateTime.Now;
-                        var certificados = ObtenerDatosCertificados(servidor.Id, servidor.Nombre, _fechaActual);
+                        var certificados2 = ObtenerDatosCertificados(servidor.Id, servidor.Nombre, _fechaActual);
 
 
                         using (TcpClient client = new TcpClient(servidor.Nombre, port))
