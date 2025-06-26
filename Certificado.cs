@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public partial class Certificado
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 
     public Guid IdServidor { get; set; }
 

@@ -169,7 +169,7 @@ public class Worker : BackgroundService
         }
     }
 
-    private List<Certificado> ObtenerDatosCertificados(Guid idServidor ,string servidor, DateTime _fechaActual)
+    private List<Certificado> ObtenerDatosCertificados(int idServidor ,string servidor, DateTime _fechaActual)
     {
         try
         {
