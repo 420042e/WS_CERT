@@ -52,6 +52,7 @@ public class Worker : BackgroundService
                 {
                     try
                     {
+                        DateTime _fechaActual = DateTime.Now;
                         var certificados = ObtenerDatosCertificados(servidor.Id, servidor.Nombre, _fechaActual);
 
 
@@ -168,7 +169,7 @@ public class Worker : BackgroundService
         }
     }
 
-    private  List<Certificado> ObtenerDatosCertificados(Guid idServidor ,string servidor, DateTime _fechaActual)
+    private List<Certificado> ObtenerDatosCertificados(Guid idServidor ,string servidor, DateTime _fechaActual)
     {
         try
         {
