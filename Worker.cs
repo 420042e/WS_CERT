@@ -52,6 +52,9 @@ public class Worker : BackgroundService
                 {
                     try
                     {
+                        var certificados = ObtenerDatosCertificados(servidor.Id, servidor.Nombre, _fechaActual);
+
+
                         using (TcpClient client = new TcpClient(servidor.Nombre, port))
                         using (SslStream sslStream = new SslStream(client.GetStream(), false, new RemoteCertificateValidationCallback(ValidateServerCertificate), null))
                         {
@@ -162,6 +165,96 @@ public class Worker : BackgroundService
         {
             //_logger.LogInformation("SendMail.MailSendClient Adrres: {0} | Error sending mail: {1}", to, ex.Message);
             return false;
+        }
+    }
+
+    private  List<Certificado> ObtenerDatosCertificados(Guid idServidor ,string servidor, DateTime _fechaActual)
+    {
+        try
+        {
+            List<Certificado> listCert = new List<Certificado>();
+
+            // Se arma el script de PowerShell con el filtrado del CN en IssuedTo e IssuedBy.
+            string psScript =
+                "Get-ChildItem -Path Cert:\\LocalMachine\\My | " +
+                "Select-Object " +
+                "Thumbprint, " +
+                "@{Name='IssuedTo'; Expression={ " +
+                "    $subject = $_.Subject; " +
+                "    $match = [regex]::Match($subject, 'CN=([^,]+)'); " +
+                "    if ($match.Success) { $match.Groups[1].Value } else { $subject } " +
+                "}}, " +
+                "@{Name='Subject'; Expression={ $_.Subject }}, " +
+                "@{Name='Issuer'; Expression={ " +
+                "    $issuer = $_.Issuer; " +
+                "    $match = [regex]::Match($issuer, 'CN=([^,]+)'); " +
+                "    if ($match.Success) { $match.Groups[1].Value } else { $issuer } " +
+                "}}, " +
+                "@{Name='IssuedBy'; Expression={ $_.Issuer }}, " +
+                "@{Name='ValidFrom'; Expression={$_.NotBefore}}, " +
+                "@{Name='ValidTo'; Expression={$_.NotAfter}}, " +
+                "@{Name='IntendedPurposes'; Expression={ ($_.EnhancedKeyUsageList | ForEach-Object { $_.FriendlyName }) -join '; ' }}, " +
+                "FriendlyName, " +
+                "@{Name='CertificateTemplate'; Expression={ " +
+                "    $template = $_.Extensions | Where-Object { $_.Oid.FriendlyName -eq 'Certificate Template Information' }; " +
+                "    if ($template -ne $null) { $template.Format($true) } else { '' } " +
+                "}} | ConvertTo-Csv -NoTypeInformation -Delimiter '|'";
+
+            using Process proceso = new Process();
+            proceso.StartInfo.FileName = "powershell.exe";
+            // Se utiliza Invoke-Command para conectarse remotamente; el script se inyecta en el parámetro -ScriptBlock.
+            proceso.StartInfo.Arguments = $"-Command \"Invoke-Command -ComputerName {servidor} -ScriptBlock {{{psScript}}}\"";
+            proceso.StartInfo.RedirectStandardOutput = true;
+            proceso.StartInfo.UseShellExecute = false;
+            proceso.StartInfo.CreateNoWindow = true;
+            proceso.Start();
+
+            bool isHeader = true;
+            while (!proceso.StandardOutput.EndOfStream)
+            {
+                string linea = proceso.StandardOutput.ReadLine();
+
+                if (isHeader)
+                {
+                    isHeader = false;
+                    continue;
+                }
+
+                if (!string.IsNullOrWhiteSpace(linea))
+                {
+                    var valores = linea.Split('|');
+                    // Se omite la cabecera de CSV
+                    
+                    if (valores.Length == 10)
+                    {
+                        Certificado certificado = new Certificado
+                        {
+                            IdServidor = idServidor,
+                            Thumbprint = valores[0].Trim('"').Trim(),
+                            IssuedTo = valores[1].Trim('"').Trim(),
+                            Subject = valores[2].Trim('"').Trim(),
+                            IssuedBy = valores[3].Trim('"').Trim(),
+                            Issuer = valores[4].Trim('"').Trim(),
+                            ValidFrom = DateTime.TryParse(valores[5].Trim('"').Trim(), out DateTime validoDesde) ? validoDesde : null,
+                            ValidTo = DateTime.TryParse(valores[6].Trim('"').Trim(), out DateTime validoHasta) ? validoHasta : null,
+                            IntendedPurposes = valores[7].Trim('"').Trim(),
+                            FriendlyName = valores[8].Trim('"').Trim(),
+                            CertificateTemplate = valores[9].Trim('"').Trim(),
+                            FechaRecuperado = _fechaActual
+                        };
+                        listCert.Add(certificado);
+                    }
+                }
+            }
+
+            proceso.WaitForExit();
+
+            return listCert;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error generando reporte certificados: {ex.Message}");
+            throw new Exception("Error generando reporte certificados");
         }
     }
 }
