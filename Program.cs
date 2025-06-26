@@ -33,11 +33,11 @@ try
             IConfiguration configuration = hostContext.Configuration;
 
             // 2. Lee tu cadena de conexión
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            /*var connectionString = configuration.GetConnectionString("DefaultConnection");
 
             // 3. Registra tu DbContext para que pueda ser inyectado
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseSqlServer(connectionString));*/
 
             // === FIN: CÓDIGO AÑADIDO ===
 
