@@ -16,6 +16,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using DocumentFormat.OpenXml.InkML;
 using WS_CERT.Data;
+using System.Runtime.CompilerServices;
 
 
 namespace WS_CERT; // Aseg�rate de que coincida con tu namespace
