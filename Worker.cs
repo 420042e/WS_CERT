@@ -54,57 +54,15 @@ public class Worker : BackgroundService
                 {
                     try
                     {
+                        _logger.LogInformation("Ingresando a server: {nombre}", servidor.Nombre);
                         DateTime _fechaActual = DateTime.Now;
                         var certificados2 = ObtenerDatosCertificados(servidor.Id, servidor.Nombre, _fechaActual);
 
 
-                        using (TcpClient client = new TcpClient(servidor.Nombre, port))
-                        using (SslStream sslStream = new SslStream(client.GetStream(), false, new RemoteCertificateValidationCallback(ValidateServerCertificate), null))
-                        {
-                            sslStream.AuthenticateAsClient(servidor.Nombre);
-                            X509Certificate cert = sslStream.RemoteCertificate;
-
-                            if (cert != null)
-                            {
-
-                                var info = new CertificadoInfo
-                                {
-                                    Host = servidor.Nombre,
-                                    Sujeto = cert.Subject,
-                                    Emisor = cert.Issuer,
-                                    ValidoDesde = cert.GetEffectiveDateString(),
-                                    ValidoHasta = cert.GetExpirationDateString(),
-                                    Observacion = ""
-                                };
-                                certificados.Add(info);
-
-
-                                _logger.LogInformation("Certificado del servidor {host}:", servidor.Nombre);
-                                _logger.LogInformation(" - Sujeto: {subject}", cert.Subject);
-                                _logger.LogInformation(" - Emisor: {issuer}", cert.Issuer);
-                                _logger.LogInformation(" - Válido desde: {start}", cert.GetEffectiveDateString());
-                                _logger.LogInformation(" - Válido hasta: {end}", cert.GetExpirationDateString());
-                            }
-                            else
-                            {
-                                _logger.LogWarning("No se pudo obtener el certificado del servidor {host}.", servidor.Nombre);
-                            }
-                        }
+ 
                     }
                     catch (Exception ex)
                     {
-                        //BorrarE
-                        var info = new CertificadoInfo
-                        {
-                            Host = servidor.Nombre,
-                            Sujeto = "null",
-                            Emisor = "null",
-                            ValidoDesde = "null",
-                            ValidoHasta = "null",
-                            Observacion = "Error al obtener el certificado del servidor " + servidor.Nombre
-                        };
-                        certificados.Add(info);
-
                         _logger.LogError(ex, "Error al obtener el certificado del servidor {host}.", servidor.Nombre);
                     }
                 }
@@ -114,7 +72,7 @@ public class Worker : BackgroundService
 
                 // Aqu� va la l�gica principal de tu servicio
                 _logger.LogInformation("El Worker est� ejecutando una tarea en: {time}", DateTimeOffset.Now);
-            _logger.LogWarning("Este es un mensaje de advertencia de ejemplo.");
+                _logger.LogWarning("Este es un mensaje de advertencia de ejemplo.");
 
 
             
@@ -246,6 +204,8 @@ public class Worker : BackgroundService
                             FechaRecuperado = _fechaActual
                         };
                         listCert.Add(certificado);
+
+                        _logger.LogInformation("Certificado: {nombre}", IssuedTo);
                     }
                 }
             }
