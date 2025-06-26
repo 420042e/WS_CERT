@@ -16,6 +16,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using DocumentFormat.OpenXml.InkML;
 using WS_CERT.Data;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 
