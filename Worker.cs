@@ -205,7 +205,7 @@ public class Worker : BackgroundService
                         };
                         listCert.Add(certificado);
 
-                        _logger.LogInformation("Certificado: {nombre}", IssuedTo);
+                        _logger.LogInformation("Certificado: {nombre}", certificado.IssuedTo);
                     }
                 }
             }
