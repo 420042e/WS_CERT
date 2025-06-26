@@ -43,7 +43,7 @@ public class Worker : BackgroundService
 
             using (var scope = _scopeFactory.CreateScope())
             {
-                var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                /*var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
                 var servidoresDev = await dbContext.Servidores.FromSqlRaw("EXEC [dbo].[usp_ObtenerServidoresDev]")
                                                            .ToListAsync(stoppingToken);
@@ -65,7 +65,7 @@ public class Worker : BackgroundService
                     {
                         _logger.LogError(ex, "Error al obtener el certificado del servidor {host}.", servidor.Nombre);
                     }
-                }
+                }*/
             }
 
             
