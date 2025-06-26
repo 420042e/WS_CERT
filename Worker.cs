@@ -43,14 +43,14 @@ public class Worker : BackgroundService
 
             using (var scope = _scopeFactory.CreateScope())
             {
-                /*var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
                 var servidoresDev = await dbContext.Servidores.FromSqlRaw("EXEC [dbo].[usp_ObtenerServidoresDev]")
                                                            .ToListAsync(stoppingToken);
 
                 int port = 443;
                 ArrayList certificados = new ArrayList();
-                foreach (var servidor in servidoresDev)
+                /*foreach (var servidor in servidoresDev)
                 {
                     try
                     {
