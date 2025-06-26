@@ -31,9 +31,4 @@ public partial class Certificado
 
     public int Estado { get; set; }
 
-    public virtual Estado EstadoNavigation { get; set; } = null!;
-
-    public virtual Servidore IdServidorNavigation { get; set; } = null!;
-
-    public virtual ICollection<LogCertificado> LogCertificados { get; set; } = new List<LogCertificado>();
 }
