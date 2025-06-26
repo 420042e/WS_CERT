@@ -5,8 +5,6 @@ public partial class Certificado
 {
     public int Id { get; set; }
 
-    public Guid IdServidor { get; set; }
-
     public string? Thumbprint { get; set; }
 
     public string? IssuedTo { get; set; }

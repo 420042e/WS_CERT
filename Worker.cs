@@ -232,7 +232,7 @@ public class Worker : BackgroundService
                     {
                         Certificado certificado = new Certificado
                         {
-                            IdServidor = idServidor,
+                            Id = idServidor,
                             Thumbprint = valores[0].Trim('"').Trim(),
                             IssuedTo = valores[1].Trim('"').Trim(),
                             Subject = valores[2].Trim('"').Trim(),
