@@ -48,8 +48,6 @@ public class Worker : BackgroundService
                 var servidoresDev = await dbContext.Servidores.FromSqlRaw("EXEC [dbo].[usp_ObtenerServidoresCer]")
                                                            .ToListAsync(stoppingToken);
 
-                int port = 443;
-                ArrayList certificados = new ArrayList();
                 foreach (var servidor in servidoresDev)
                 {
                     try
@@ -57,9 +55,6 @@ public class Worker : BackgroundService
                         _logger.LogInformation("Ingresando a server: {nombre}", servidor.Nombre);
                         DateTime _fechaActual = DateTime.Now;
                         var certificados2 = ObtenerDatosCertificados(servidor.Id, servidor.Nombre, _fechaActual);
-
-
- 
                     }
                     catch (Exception ex)
                     {
@@ -68,15 +63,9 @@ public class Worker : BackgroundService
                 }
             }
 
-            
-
-                // Aqu� va la l�gica principal de tu servicio
-                _logger.LogInformation("El Worker est� ejecutando una tarea en: {time}", DateTimeOffset.Now);
-                _logger.LogWarning("Este es un mensaje de advertencia de ejemplo.");
-
-
-            
-
+            // Aqu� va la l�gica principal de tu servicio
+            _logger.LogInformation("El Worker est� ejecutando una tarea en: {time}", DateTimeOffset.Now);
+            _logger.LogWarning("Este es un mensaje de advertencia de ejemplo.");
 
             _logger.LogInformation("Generando reporte.");
 
