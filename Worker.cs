@@ -45,7 +45,7 @@ public class Worker : BackgroundService
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-                var servidoresDev = await dbContext.Servidores.FromSqlRaw("EXEC [dbo].[usp_ObtenerServidoresDev]")
+                var servidoresDev = await dbContext.Servidores.FromSqlRaw("EXEC [dbo].[usp_ObtenerServidoresCer]")
                                                            .ToListAsync(stoppingToken);
 
                 int port = 443;
